@@ -1,6 +1,3 @@
--- Création du type ENUM pour reading_status
-CREATE TYPE reading_status_enum AS ENUM ('à_lire', 'en_cours', 'lu');
-
 CREATE TABLE users (
     id_user SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
@@ -30,9 +27,9 @@ CREATE TABLE images (
 CREATE TABLE books (
     id_book SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
-    isbn VACHAR(255),
+    isbn VARCHAR(255),
     created_at TIMESTAMP NOT NULL,
-    reading_status reading_status_enum NOT NULL,
+    reading_status VARCHAR(255) NOT NULL,
     is_favorite BOOLEAN NOT NULL,
     description TEXT,
     id_serie INT REFERENCES series(id_serie)
