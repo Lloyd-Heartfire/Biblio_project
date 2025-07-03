@@ -7,14 +7,14 @@ from .base import Base
 # On crée le modèle Book qui représente la table "books" dans la base avec :
 class Book(Base):
 
-    ## Titre du livre, obligatoire, avec un index pour les recherches
+    ## ID du livre, obligatoire, avec un index pour les recherches
+    id = Column ("id_book", Integer, primary_key= True, index=True)
+
+    ## Titre du livre
     title = Column(String(255), nullable=False, index=True)
 
     ## Numéro ISBN du livre
     isbn = Column(String(255), nullable=False, index=True)
-
-    ## Nom de l’auteur
-    author = Column(String(255), nullable=False, index=True)
 
     ## Statut de lecture
     reading_status = Column(String(255), nullable=False, index=True)

@@ -1,5 +1,5 @@
 # On importe les outils pour créer des colonnes avec des types (entier, date)
-from sqlalchemy import Column, Integer, DateTime
+from sqlalchemy import Column, DateTime
 
 # On importe ce qu’il faut pour créer une classe de base réutilisable
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
@@ -13,9 +13,6 @@ import re
 # Cette classe sera la base de toutes les autres tables
 @as_declarative()
 class Base:
-
-    # Chaque table aura une colonne "id" comme identifiant unique
-    id = Column("id_book", Integer, primary_key=True, index=True)
 
     # Chaque table aura une date de création automatique
     created_at = Column(DateTime, default=datetime.utcnow)
