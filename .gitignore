@@ -1,5 +1,3 @@
-# FRONT #
-
 # dependencies
 /node_modules
 /.pnp
@@ -41,5 +39,4 @@ yarn-error.log*
 next-env.d.ts
 
 # BACK #
-
-back/venv/
+database/__pychache__
