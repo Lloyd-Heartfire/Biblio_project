@@ -7,6 +7,15 @@ class SeriesController:
 
     def create_series(self, data: dict):
         return self.repo.create(data)
+    
+    def get_series(self, series_id: int):
+        return self.repo.get(series_id)
+
+    def get_all_series(self):
+        return self.repo.get_all()
+
+    def update_series(self, series_id: int, data: dict):
+        return self.repo.update(series_id, data)
 
     def delete_series(self, series_id: int):
         series = self.repo.get(series_id)

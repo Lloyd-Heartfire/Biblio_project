@@ -11,6 +11,21 @@ class BookController:
 
         # Crée un nouveau livre à partir des données fournies
         return self.repo.create(data)
+    
+    def get_book(self, book_id: int):
+
+        # Récupère un livre spécifique à partir de son ID
+        return self.repo.get(book_id)
+
+    def get_all_books(self):
+
+        # Récupère tous les livres enregistrés en base
+        return self.repo.get_all()
+
+    def update_book(self, book_id: int, data: dict):
+
+        # Met à jour les données d’un livre existant avec les nouvelles valeurs fournies
+        return self.repo.update(book_id, data)
 
     def delete_book(self, book_id: int):
 

@@ -7,6 +7,15 @@ class ImageController:
 
     def add_image(self, data: dict):
         return self.repo.create(data)
+    
+    def get_image(self, image_id: int):
+        return self.repo.get(image_id)
+
+    def get_all_images(self):
+        return self.repo.get_all()
+
+    def update_image(self, image_id: int, data: dict):
+        return self.repo.update(image_id, data)
 
     def delete_image(self, image_id: int):
         image = self.repo.get(image_id)

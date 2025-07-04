@@ -16,6 +16,11 @@ class BookRepository(BaseRepository):
         # Initialise le repository avec le modèle Book
         super().__init__(db, Book)
 
+    def get_all(self):
+
+        # Récupère tous les enregistrements de la table associée au modèle
+        return self.db.query(self.model).all()
+
     def get_by_title(self, title: str):
         # Retourne le premier livre correspondant au titre donné
         return self.db.query(self.model).filter_by(title=title).first()
