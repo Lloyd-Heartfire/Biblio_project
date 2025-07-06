@@ -1,4 +1,16 @@
 from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
+
+# URL de connexion
+DATABASE_URL = "postgresql://postgres:password@localhost:5432/biblio"
+
+engine = create_engine(DATABASE_URL, echo=False)
+
+SessionLocal = sessionmaker(
+    bind=engine,
+    autocommit=False,
+    autoflush=False,
+)
 
 # conn=engine.connect()
 # print(conn)
@@ -6,7 +18,6 @@ from sqlalchemy import create_engine, text
 # print(result.fetchone())
 # conn.commit()
 def init_db():
-    engine = create_engine("postgresql://postgres:password@localhost:5432/biblio", echo=False)
     with engine.connect() as connection:
         connection.execute(text('''
             CREATE TABLE IF NOT EXISTS users (
@@ -73,3 +84,12 @@ def init_db():
         '''))
 
         print("ça fonctionne ?")
+    
+
+def get_db():
+
+db = SessionLocal()
+try:
+    yield db
+finally:
+    db.close()
