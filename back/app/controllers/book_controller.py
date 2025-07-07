@@ -1,4 +1,4 @@
-from repositories.book_repository import BookRepository
+from app.repositories.book_repository import BookRepository
 from sqlalchemy.orm import Session
 
 class BookController:
