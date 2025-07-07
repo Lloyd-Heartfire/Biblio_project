@@ -1,5 +1,5 @@
 # dependencies
-/node_modules
+front/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -12,7 +12,7 @@
 /coverage
 
 # next.js
-/.next/
+front/.next/
 /out/
 
 # production
@@ -39,7 +39,7 @@ yarn-error.log*
 next-env.d.ts
 
 # BACK #
-database/__pychache__
+database/__pycache__
 back/app/__pycache__/main.cpython-311.pyc
 back/app/controllers/__pycache__/__init__.cpython-311.pyc
 back/app/controllers/__pycache__/book_controller.cpython-311.pyc
@@ -61,4 +61,14 @@ back/app/repositories/__pycache__/user_repository.cpython-311.pyc
 back/app/routes/__pycache__/__init__.cpython-311.pyc
 back/app/routes/__pycache__/book_route.cpython-311.pyc
 back/app/routes/__pycache__/user_route.cpython-311.pyc
+back/app/database/__pycache__/database.cpython-311.pyc
+back/app/controllers/__pycache__/author_controller.cpython-311.pyc
+back/app/controllers/__pycache__/image_controller.cpython-311.pyc
+back/app/controllers/__pycache__/serie_controller.cpython-311.pyc
+back/app/repositories/__pycache__/author_repository.cpython-311.pyc
+back/app/repositories/__pycache__/image_repository.cpython-311.pyc
+back/app/repositories/__pycache__/serie_repository.cpython-311.pyc
+back/app/routes/__pycache__/author_route.cpython-311.pyc
+back/app/routes/__pycache__/image_route.cpython-311.pyc
+back/app/routes/__pycache__/serie_route.cpython-311.pyc
 back/app/database/__pycache__/database.cpython-311.pyc
