@@ -16,7 +16,7 @@ export default function BookListPage() {
         <div className = "max-w-3xl mx-auto px-4 py-8">
             <h1 className = "text-2xl font-bold mb-4"> Liste des livres </h1>
 
-            <Link href = "/books/new" className = "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-6 inline-block"> Ajouter un livre </Link>
+            <Link href = "/books/creation" className = "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-6 inline-block"> Ajouter un livre </Link>
 
             <ul className = "space-y-4">
                 {books.map((book: any) => (

@@ -9,7 +9,7 @@ export const fetchBook = (id) => apiFetch(`/books/${id}`);
 
 // Fonction créant un nouvel livre (POST)
 export const createBook = (data) =>
-    apiFetch(`/books`, {
+    apiFetch(`/books/`, {
         method: "POST",
         body: JSON.stringify(data),
     });
