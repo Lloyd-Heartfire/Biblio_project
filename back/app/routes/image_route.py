@@ -1,13 +1,23 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from app.controllers.image_controller import ImageController
 from app.database.database import get_db
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/images",
+  tags=["images"],
+)
 
 @router.post("/")
-def add_image(data: dict, db: Session = Depends(get_db)):
-    return ImageController(db).add_image(data)
+async def add_image(request: Request, db: Session = Depends(get_db)):
+    data = await request.json()
+    ctrl = ImageController(db)
+    user = ctrl.add_image(data)
+    return {
+            "id_image": user.id,
+            "url": user.url,
+            "name": user.name,
+        }
 
 @router.get("/{image_id}")
 def get_image(image_id: int, db: Session = Depends(get_db)):
