@@ -12,6 +12,7 @@ from .association_tables import author_books, user_books, book_images
 
 # On crée le modèle Book qui représente la table "books" dans la base avec :
 class Book(Base):
+    __tablename__ = "books"
 
     ## ID du livre, obligatoire, avec un index pour les recherches
     id = Column ("id_book", Integer, primary_key= True, index=True)

@@ -3,14 +3,18 @@ from sqlalchemy.orm import Session
 from app.controllers.user_controller import UserController
 from app.database.database import get_db
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/users",
+  tags=["users"],
+)
 
 @router.post("/")
 async def create_user(request: Request, db: Session = Depends(get_db)):
     data = await request.json()
-    user = UserController.create_user(db, data)
+    ctrl = UserController(db)
+    user = ctrl.create_user(data)
     return {
-            "id_user": user.id_user,
+            "id_user": user.id,
             "username": user.username,
             "email": user.email,
             "role": user.role
