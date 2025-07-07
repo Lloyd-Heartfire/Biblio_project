@@ -1,4 +1,4 @@
-from repositories.image_repository import ImageRepository
+from app.repositories.image_repository import ImageRepository
 from sqlalchemy.orm import Session
 
 class ImageController:

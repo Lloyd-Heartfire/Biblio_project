@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.author import Author
+from app.models.author import Author
 from .base import BaseRepository
 
 class AuthorRepository(BaseRepository):

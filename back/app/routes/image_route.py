@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from controllers.image_controller import ImageController
-from database import get_db
+from app.controllers.image_controller import ImageController
+from app.database.database import get_db
 
 router = APIRouter()
 

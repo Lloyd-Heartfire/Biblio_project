@@ -1,5 +1,7 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+from app.models.base import Base
+from app.models import Book, Image, User, Serie, Author
 
 # URL de connexion
 DATABASE_URL = "postgresql://postgres:password@db:5432/biblio"
@@ -82,6 +84,9 @@ def init_db():
                 PRIMARY KEY (id_author, id_book)
             );
         '''))    
+
+def create_tables():
+    Base.metadata.create_all(bind=engine)
 
 def get_db():
     db = SessionLocal()

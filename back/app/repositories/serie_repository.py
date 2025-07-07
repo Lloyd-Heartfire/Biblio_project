@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.serie import Serie
+from app.models.serie import Serie
 from .base import BaseRepository
 
 class SerieRepository(BaseRepository):

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.database.database import init_db
+from app.database.database import init_db, create_tables
 from app.routes import book_route, user_route
 import uvicorn
 
@@ -24,6 +24,7 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     init_db()
+    create_tables()
 
 app.include_router(book_route.router)
 app.include_router(user_route.router)
