@@ -1,8 +1,8 @@
 # Importe la classe Book depuis le module models.book
-from models.book import Book
+from app.models.book import Book
 
 # Importe la classe Author depuis le module models.author
-from models.author import Author
+from app.models.author import Author
 
 # Importe la classe de base pour les repositories
 from .base import BaseRepository

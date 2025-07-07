@@ -1,13 +1,24 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
-from controllers.user_controller import UserController
-from database import get_db
+from app.controllers.user_controller import UserController
+from app.database.database import get_db
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/users",
+  tags=["users"],
+)
 
 @router.post("/")
-def create_user(data: dict, db: Session = Depends(get_db)):
-    return UserController(db).create_user(data)
+async def create_user(request: Request, db: Session = Depends(get_db)):
+    data = await request.json()
+    ctrl = UserController(db)
+    user = ctrl.create_user(data)
+    return {
+            "id_user": user.id,
+            "username": user.username,
+            "email": user.email,
+            "role": user.role
+        }
 
 @router.get("/{user_id}")
 def get_user(user_id: int, db: Session = Depends(get_db)):

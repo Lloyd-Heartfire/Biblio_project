@@ -1,13 +1,26 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
-from controllers.book_controller import BookController
-from database import get_db
+from app.controllers.book_controller import BookController
+from app.database.database import get_db
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/books",
+  tags=["books"],
+)
 
 @router.post("/")
-def create_book(data: dict, db: Session = Depends(get_db)):
-    return BookController(db).create_book(data)
+async def create_book(request: Request, db: Session = Depends(get_db)):
+    data = await request.json()
+    ctrl = BookController(db)
+    user = ctrl.create_book(data)
+    return {
+            "id_book": user.id,
+            "title": user.title,
+            "isbn": user.isbn,
+            "reading_status": user.reading_status,
+            "is_favorite": user.is_favorite,
+            "description": user.description,
+        }
 
 @router.get("/{book_id}")
 def get_book(book_id: int, db: Session = Depends(get_db)):

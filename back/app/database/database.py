@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+from app.models.base import Base
+from app.models import Book, Image, User, Serie, Author
 
 # URL de connexion
-DATABASE_URL = "postgresql://postgres:password@localhost:5432/biblio"
+DATABASE_URL = "postgresql://postgres:password@db:5432/biblio"
 
 engine = create_engine(DATABASE_URL, echo=False)
 
@@ -81,15 +83,14 @@ def init_db():
                 id_book INT REFERENCES books(id_book),
                 PRIMARY KEY (id_author, id_book)
             );
-        '''))
+        '''))    
 
-        print("ça fonctionne ?")
-    
+def create_tables():
+    Base.metadata.create_all(bind=engine)
 
 def get_db():
-
-db = SessionLocal()
-try:
-    yield db
-finally:
-    db.close()
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

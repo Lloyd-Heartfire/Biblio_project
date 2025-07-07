@@ -5,6 +5,8 @@ from .base import Base
 from .association_tables import book_images
 
 class Image(Base):
+    __tablename__ = "images"
+
     id = Column ("id_image", Integer, primary_key= True, index=True)
     url = Column(Text, nullable=False)
     name = Column(String(255), nullable=True, index=True)

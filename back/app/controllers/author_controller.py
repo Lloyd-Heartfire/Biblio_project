@@ -1,4 +1,4 @@
-from repositories.author_repository import AuthorRepository
+from app.repositories.author_repository import AuthorRepository
 from sqlalchemy.orm import Session
 
 class AuthorController:

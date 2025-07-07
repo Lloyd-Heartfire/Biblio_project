@@ -1,4 +1,4 @@
-from repositories.user_repository import UserRepository
+from app.repositories.user_repository import UserRepository
 from sqlalchemy.orm import Session
 
 class UserController:

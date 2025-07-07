@@ -1,13 +1,22 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
-from controllers.author_controller import AuthorController
-from database import get_db
+from app.controllers.author_controller import AuthorController
+from app.database.database import get_db
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/authors",
+  tags=["authors"],
+)
 
 @router.post("/")
-def create_author(data: dict, db: Session = Depends(get_db)):
-    return AuthorController(db).create_author(data)
+async def create_author(request: Request, db: Session = Depends(get_db)):
+    data = await request.json()
+    ctrl = AuthorController(db)
+    user = ctrl.create_author(data)
+    return {
+            "id_author": user.id,
+            "name": user.name,
+        }
 
 @router.get("/{author_id}")
 def get_author(author_id: int, db: Session = Depends(get_db)):

@@ -1,4 +1,4 @@
-from repositories.serie_repository import SerieRepository
+from app.repositories.serie_repository import SerieRepository
 from sqlalchemy.orm import Session
 
 class SeriesController:

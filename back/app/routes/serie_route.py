@@ -1,13 +1,23 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
-from controllers.serie_controller import SeriesController
-from database import get_db
+from app.controllers.serie_controller import SeriesController
+from app.database.database import get_db
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/series",
+  tags=["series"],
+)
 
 @router.post("/")
-def create_series(data: dict, db: Session = Depends(get_db)):
-    return SeriesController(db).create_series(data)
+async def create_series(request: Request, db: Session = Depends(get_db)):
+    data = await request.json()
+    ctrl = SeriesController(db)
+    user = ctrl.create_series(data)
+    return {
+            "id_user": user.id,
+            "name": user.name,
+            "description": user.description,
+        }
 
 @router.get("/{series_id}")
 def get_series(series_id: int, db: Session = Depends(get_db)):
