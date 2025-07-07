@@ -2,7 +2,7 @@
 export async function apiFetch(path, options = {}) {
 
     // Concatène l’URL de base (env) avec le chemin donné
-    const res = await fetch(`${ProcessingInstruction.env.NEXT_PUBLIC_API_URL}${path}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${path}`, {
 
         // Ajoute les headers pour dire qu’on envoie du JSON
         headers: { "Content-Type": "application/json" },
