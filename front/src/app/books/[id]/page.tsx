@@ -35,11 +35,6 @@ export default function BookDetailPage() {
         <div className = "max-w-2xl mx-auto px-4 py-8 text-white">
             <h1 className = "text-3xl font-bold mb-2"> {book.title} </h1>
 
-            <p className = "text-sm text-gray-400 italic mb-4"> Statut : {book.reading_status}</p>
-
-            {book.is_favorite && (
-                <span className = "inline-block text-yellow-500 text-sm mb-4"> Favori </span>
-            )}
 
             <p className = "text-sm text-gray-300 mb-2">
                 <strong> ISBN :</strong> {book.isbn || "-"}
@@ -50,6 +45,12 @@ export default function BookDetailPage() {
                 {book.description || <em className = "text-gray-500"> Pas de description. </em>}
             </p>
 
+            <p className = "text-sm text-gray-400 italic mb-4"> Statut : {book.reading_status}</p>
+
+            {book.is_favorite && (
+                <span className = "inline-block text-yellow-500 text-sm mb-4"> Favori </span>
+            )}
+            
             <p className = "mt-8">
                 <Link href = "/books/" className = "text-green-500 hover:underline"> Retour à la liste </Link>
             </p>
