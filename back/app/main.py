@@ -4,13 +4,6 @@ from app.database.database import init_db, create_tables
 from app.routes import book_route, user_route, author_route, image_route, serie_route
 import uvicorn
 
-# Importation des router défini dans chacun de mes modules
-# from routes.book_route   import router as book_router
-# from routes.user_route   import router as user_router
-# from routes.author_route import router as author_router
-# from routes.serie_route  import router as serie_router
-# from routes.image_route  import router as image_router
-
 app = FastAPI(title="Projet_Bibliothèque")
 
 app.add_middleware(
