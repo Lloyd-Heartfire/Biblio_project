@@ -33,9 +33,8 @@ export default function BookListPage() {
       {/* Bouton vers la page de création de livre */}
       <Link
         href = "/books/creation"
-        className = "inline-block mb-6 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded shadow"
-      >
-        + Ajouter un livre
+        className = "inline-block mb-6 bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded shadow">
+        Ajouter un livre
       </Link>
 
       {/* Si aucun livre n’a été créé */}
@@ -48,8 +47,7 @@ export default function BookListPage() {
           {books.map((book: any) => (
             <li
               key = {book.id_book}
-              className = "border border-gray-700 rounded-lg bg-gray-900 p-4 shadow-md hover:border-indigo-500 transition"
-            >
+              className = "border border-gray-700 rounded-lg bg-gray-900 p-4 shadow-md hover:border-indigo-500 transition">
 
               {/* En-tête de la carte : titre + lien "modifier" */}
               <div className = "flex justify-between items-start">
@@ -57,9 +55,8 @@ export default function BookListPage() {
 
                   {/* Titre du livre, cliquer pour voir les détails */}
                   <Link
-                    href = {`/books/${book.id_book}`}
-                    className = "text-xl font-semibold text-indigo-300 hover:underline"
-                  >
+                    href = {`/books/${book.id}`}
+                    className = "text-xl font-semibold text-indigo-300 hover:underline">
                     {book.title}
                   </Link>
 
@@ -72,8 +69,7 @@ export default function BookListPage() {
                 {/* Lien pour modifier le livre */}
                 <Link
                   href = {`/books/${book.id_book}/edit`}
-                  className = "text-sm text-indigo-400 hover:underline"
-                >
+                  className = "text-sm text-indigo-400 hover:underline">
                   Modifier
                 </Link>
               </div>

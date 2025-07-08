@@ -12,7 +12,8 @@ export async function apiFetch(path, options = {}) {
     // Si la réponse n’est pas OK (ex. 404, 500), ça renvoie un message d'erreur
     if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        throw new Error(err.detail || res.statusText);
+        const message = err.detal || err.message || JSON.stringify(err) || res.statusText;
+        throw new Error(message);
     }
 
     // Si tout est OK, on retourne les données JSON

@@ -5,7 +5,7 @@ import {apiFetch} from "./api";
 export const fetchBooks = () => apiFetch(`/books/`);
 
 // Fonction permettant de récupérer un livre (GET)
-export const fetchBook = (id) => apiFetch(`/books/${id}`);
+export const getBookById = (id) => apiFetch(`/books/${id}`);
 
 // Fonction créant un nouvel livre (POST)
 export const createBook = (data) =>
